@@ -39,11 +39,11 @@ const Header = () => {
             <p className=" flex items-center gap-1 text-[32px]">
               {/* <p className=" text-xl flex items-center mb-3">Winter</p> */}
               <Image
-                className=" flex items-center size-10"
-                src="https://cdn-icons-png.freepik.com/256/4608/4608448.png?ga=GA1.1.228051697.1693212978&"
+                className=" flex items-center size-28"
+                src="https://askbootstrap.com/preview/eatsie/assets/img/logo.svg"
                 alt=""
-                width={20}
-                height={20}
+                width={40}
+                height={40}
               />
             </p>
           </Link>

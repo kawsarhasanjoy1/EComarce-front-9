@@ -45,7 +45,6 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <p className=" text-xl  mb-4">Discover</p>
             <div className=" flex flex-col gap-3 ">
               <Link className=" hover:underline hover:text-red-300" href={"/"}>
                 Home
