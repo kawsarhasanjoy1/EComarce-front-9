@@ -55,7 +55,7 @@ const LoginPage = () => {
         <div className="flex flex-col sm:flex-row justify-between space-x-0 sm:space-x-12">
           <div className="w-full sm:w-1/2 mb-8 sm:mb-0">
             {/* Left side form */}
-            <h2 className="text-2xl font-bold mb-6">Login</h2>
+            <h2 className="text-2xl font-bold mb-6 w-0">Login</h2>
             <BForm
               defaultValues={DefaultLoginValue}
               resolver={zodResolver(loginSchema)}

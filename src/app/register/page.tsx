@@ -45,7 +45,7 @@ const Register = () => {
         </Link>
         <div className="w-full  mb-8 sm:mb-0">
           {/* Left side form */}
-          <h2 className="text-2xl font-bold mb-6">Register Now</h2>
+          <h2 className="text-2xl font-bold mb-6 w-[95%]">Register Now</h2>
           <BForm
             defaultValues={DefaultRegisterValue}
             onSubmit={HandleToSubmit}

@@ -1,9 +1,3 @@
-# baby-care-front-9
-# ECommerce-front-9
-# EComarce-back-9
-# EComarce-Frontend-9
-# EComarce-Frontend-9
-# EComarce-Frontend-9
 # EComarce-front-9
-# Baby-ECommarce
-# EComarce-front-9
+
+this is mern stack project , this project food releted for baby , this website custom authentication system with mogodb express , user can create account and login account , user can buy prduct 

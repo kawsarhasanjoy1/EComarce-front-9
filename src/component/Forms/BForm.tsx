@@ -9,7 +9,7 @@ const BForm = ({ children, onSubmit, defaultValues, resolver }: TForm) => {
   if (defaultValues) {
     formConfig["defaultValues"] = defaultValues;
   }
-  if (defaultValues) {
+  if (resolver) {
     formConfig["resolver"] = resolver;
   }
 
