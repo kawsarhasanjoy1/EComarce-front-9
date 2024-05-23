@@ -10,9 +10,9 @@ const FlashDetailsPage = async ({ params }: { params: any }) => {
   
   return (
     <div>
-      <BrandHeader name="Flash-sale" image={sale[0].image} category="" />
+      <BrandHeader name="Flash-sale" image={sale[0]?.image} category="" />
       <div className=" my-20">
-        {product.map((product: TProduct) => (
+        {product?.map((product: TProduct) => (
           <DetailsCard key={product?._id} product={product} />
         ))}
       </div>
