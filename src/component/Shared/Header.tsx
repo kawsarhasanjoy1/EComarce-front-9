@@ -14,6 +14,7 @@ const Header = () => {
   const HandleHeader = () => {
     setIsOpen(!isOpen);
   };
+  
 
   return (
     <div className=" z-20 fixed w-full ">

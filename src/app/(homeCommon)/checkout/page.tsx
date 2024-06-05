@@ -5,10 +5,14 @@ import CheckOutSummary from "@/component/ui/CheckOut/CheckOutSummary";
 import { clearToOrder } from "@/redux/api/features/orderSlice";
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import verifyToken from "@/utils/verifyToken/verifyToken";
 import { MdCancel } from "react-icons/md";
 
 const page = () => {
   const data = useAppSelector((store: any) => store.order.order);
+  const { token } = useAppSelector((store: any) => store.auth);
+  const user: any = verifyToken(token);
+  const filter = data?.filter((item: TOrder) => item?.email == user?.email);
   const dispatch = useAppDispatch();
   return (
     <>
@@ -27,7 +31,7 @@ const page = () => {
             </div>
             <div className=" space-y-4">
               {" "}
-              {data?.map((order: TOrder) => (
+              {filter?.map((order: TOrder) => (
                 <CheckOutCart key={order?.productId} order={order} />
               ))}
             </div>
