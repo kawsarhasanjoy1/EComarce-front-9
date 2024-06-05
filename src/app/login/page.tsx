@@ -4,6 +4,7 @@ import { loginSchema } from "@/ValidationSchema/loginSchema";
 import BForm from "@/component/Forms/BForm";
 import { Input } from "@/component/Forms/Input";
 import Button from "@/component/ui/Button/Button";
+import { authKey } from "@/constanc/authKey";
 import { setUser } from "@/redux/api/features/authSlice";
 import { useLoginUserMutation } from "@/redux/api/userAPi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
@@ -17,6 +18,7 @@ import toast from "react-hot-toast";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 import { IoMdHome } from "react-icons/io";
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -26,8 +28,9 @@ const LoginPage = () => {
     try {
       const res: any = await loginUser(data).unwrap();
       const user = verifyToken(res?.token);
-      dispatch(setUser({ user: user, token: res?.token }));
       if (res?.token) {
+        Cookies.set(authKey, res?.token, { expires: 7 });
+        dispatch(setUser({ user: user, token: res?.token }));
         toast.success("User login successful");
         router.push("/");
       } else {
@@ -88,7 +91,15 @@ const LoginPage = () => {
               to create your account.
             </p>
             <Link href={"/register"}>
-              <Button className={`${mode ? 'hover:text-black w-full rounded-md' : "hover:text-white w-full rounded-md bg-red-600 border-2 border-red-600 hover:border-2 hover:border-red-600"}`}>Create Account</Button>
+              <Button
+                className={`${
+                  mode
+                    ? "hover:text-black w-full rounded-md"
+                    : "hover:text-white w-full rounded-md bg-red-600 border-2 border-red-600 hover:border-2 hover:border-red-600"
+                }`}
+              >
+                Create Account
+              </Button>
             </Link>
             <p className="text-center my-4">OR</p>
             <button className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full mb-2 bg-blue-600 text-white">

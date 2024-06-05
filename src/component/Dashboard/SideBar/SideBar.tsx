@@ -1,4 +1,5 @@
 "use client";
+import { authKey } from "@/constanc/authKey";
 import { setUser } from "@/redux/api/features/authSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { SideBarItem } from "@/utils/sideBarItem/SideBarItem";
@@ -7,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 import { BiHome, BiLogOut } from "react-icons/bi";
+import Cookies from "js-cookie";
 
 const SideBar = () => {
   const router = useRouter();
@@ -16,13 +18,14 @@ const SideBar = () => {
   const HandleToLogOut = () => {
     const res = dispatch(setUser({ user: null, token: null }));
     if (res?.payload?.user === null && res?.payload?.token === null) {
+      Cookies.remove(authKey);
       router.push("/");
       toast.success("User LogOut successful");
     } else {
       toast.error("Something went wrong!");
     }
   };
-  
+
   const isAdmin = "admin";
   return (
     <div className=" sticky top-0 border px-4 bg-black h-screen text-white  space-y-2">

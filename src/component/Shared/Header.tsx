@@ -4,33 +4,17 @@ import { FaBars, FaSun } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { setUser } from "@/redux/api/features/authSlice";
-import { MdAddShoppingCart } from "react-icons/md";
-import { setMode } from "@/redux/api/features/modeSlice";
-import { IoSunnyOutline } from "react-icons/io5";
-import { HiOutlineMoon } from "react-icons/hi";
+
+import dynamic from "next/dynamic";
 
 const Header = () => {
+  const Auth = dynamic(() => import("../Auth"), { ssr: false });
   const [isOpen, setIsOpen] = useState(false);
 
   const HandleHeader = () => {
     setIsOpen(!isOpen);
   };
 
-  const dispatch = useAppDispatch();
-  const user = useAppSelector((store) => store?.auth?.user);
-  const { mode } = useAppSelector((store) => store.mode);
-
-  const order = useAppSelector((store) => store?.order?.order);
-  const HandleToLogOut = () => {
-    dispatch(setUser({ user: null, token: null }));
-  };
-  const HandleToMode = () => {
-    dispatch(setMode());
-  };
-
-  const isAdmin = "admin";
   return (
     <div className=" z-20 fixed w-full ">
       <div className=" flex px-3 text-white font-semibold max-w-[1280px] text-[16px]  bg-[#000000] w-full h-14 mx-auto">
@@ -83,48 +67,7 @@ const Header = () => {
               <Link href={"#"}>Contact</Link>
               <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
             </li>
-            <li className="group flex  cursor-pointer flex-col">
-              <Link href={`/dashboard/${isAdmin}`}>Dashboard</Link>
-              <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-            </li>
-            <li className="group flex  cursor-pointer flex-col relative">
-              <Link href={"/checkout"}>
-                <p className=" absolute md:-top-3 md:-right-6 left-6 text-[12px] bg-[#a2e233] px-3 rounded-full">
-                  {order?.length}
-                </p>
-                <MdAddShoppingCart size={20} />{" "}
-              </Link>
-              <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-            </li>
-            <li
-              onClick={HandleToMode}
-              className="group flex  cursor-pointer flex-col relative justify-center items-center rounded-full duration-500"
-            >
-              {mode ? (
-                <IoSunnyOutline size={25} />
-              ) : (
-                <HiOutlineMoon size={25} />
-              )}
-              <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-            </li>
-
-            {user ? (
-              <li className="group flex  cursor-pointer flex-col text-start justify-start">
-                <button onClick={HandleToLogOut}>LogOut</button>
-                <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-              </li>
-            ) : (
-              <div className=" md:flex items-center gap-10 space-y-4 md:space-y-0">
-                <li className="group flex  cursor-pointer flex-col">
-                  <Link href={"/login"}>Login</Link>
-                  <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-                </li>
-                <li className="group flex  cursor-pointer flex-col">
-                  <Link href={"/register"}>Register</Link>
-                  <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-                </li>
-              </div>
-            )}
+            <Auth />
           </ul>
         </div>
       </div>
