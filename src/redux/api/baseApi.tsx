@@ -4,7 +4,7 @@ import { TagTypeList } from "../TagTypes";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/",
+    baseUrl: "https://ecomarce-back-9.onrender.com/",
   }),
   //end
   endpoints: (builder) => ({}),
