@@ -3,22 +3,25 @@ import { baseApi } from "./baseApi";
 const orderApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createOrder: build.mutation({
-      query: (data) => ({
-        url: "/order",
-        method: "POST",
-        body: data,
-      }),
+      query: (data) => (
+        console.log(data),
+        {
+          url: "order",
+          method: "POST",
+          data,
+        }
+      ),
     }),
 
     fetchAllOrder: build.query({
       query: () => ({
-        url: `/order`,
+        url: `orders`,
         method: "GET",
       }),
     }),
     fetchOrder: build.query({
       query: (email) => ({
-        url: `/order/${email}`,
+        url: `orders-email/${email}`,
         method: "GET",
       }),
     }),

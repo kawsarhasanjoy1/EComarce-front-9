@@ -1,12 +1,10 @@
 import { checkOutDefaultValues } from "@/DeafualtValue/global";
 import BForm from "@/component/Forms/BForm";
-import BSelect from "@/component/Forms/BSelect";
 import { Input } from "@/component/Forms/Input";
-import { clearToOrder, totalPrice } from "@/redux/api/features/orderSlice";
+import { clearToOrder } from "@/redux/api/features/orderSlice";
 import {
   useCreateOrderMutation,
   useFetchAllOrderQuery,
-  useFetchOrderQuery,
 } from "@/redux/api/orderApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import React from "react";
@@ -18,21 +16,21 @@ const CheckOutSummary = () => {
   const { priceOfTotalSelectedProducts, selectedProducts } = useAppSelector(
     (store: any) => store.order
   );
-  const email = useAppSelector(
-    (store: { auth: { user: { email: string } } }) => store?.auth?.user?.email
-  );
-  const order = useAppSelector((store: any) => store?.order);
-  const { data, isLoading } = useFetchAllOrderQuery(undefined);
+  const { user } = useAppSelector((store: any) => store?.auth);
+  const { order } = useAppSelector((store: any) => store?.order);
+  const filter = order?.filter((item: any) => item?.email === user?.email);
+
+  // const { data, isLoading } = useFetchAllOrderQuery(undefined);
   const [createOrder] = useCreateOrderMutation();
   const handleToSubmit = async (e: FieldValues) => {
     const confirmOrder = {
       ...e,
-      name: data?.name,
-      email: data?.email,
-      quantity: selectedProducts,
+      email: user?.email,
+      product: filter,
       price: priceOfTotalSelectedProducts,
       totalPrice: 15 * selectedProducts + priceOfTotalSelectedProducts,
     };
+    
     try {
       const res = await createOrder(confirmOrder).unwrap();
       if (res.message) {
@@ -83,7 +81,7 @@ const CheckOutSummary = () => {
             />
             <Input
               edit=" rounded-md"
-              name="subDistrict"
+              name="subdistrict"
               type="text"
               label="Sub District"
             />

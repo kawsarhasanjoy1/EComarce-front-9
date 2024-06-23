@@ -1,7 +1,7 @@
 "use client";
 import { authKey } from "@/constanc/authKey";
 import { setUser } from "@/redux/api/features/authSlice";
-import { useAppDispatch } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { SideBarItem } from "@/utils/sideBarItem/SideBarItem";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -14,6 +14,7 @@ const SideBar = () => {
   const router = useRouter();
   const path = usePathname();
   const dispatch = useAppDispatch();
+  const { user } = useAppSelector((store) => store.auth);
 
   const HandleToLogOut = () => {
     const res = dispatch(setUser({ user: null, token: null }));
@@ -26,10 +27,10 @@ const SideBar = () => {
     }
   };
 
-  const isAdmin = "admin";
+  const isRole = user?.role;
   return (
     <div className=" sticky top-0 border px-4 bg-black h-screen text-white  space-y-2">
-      {SideBarItem(isAdmin).map((Item) => (
+      {SideBarItem(isRole).map((Item) => (
         <Link
           key={Item?.title}
           className={`px-3 `}

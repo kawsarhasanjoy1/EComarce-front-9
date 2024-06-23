@@ -27,6 +27,9 @@ export interface TProduct {
   price: number;
   discountPrice: number;
   name: string;
+  ratingAverage?: number;
+  ratingQuantity?: number;
+  reviews?: [];
   category: string;
   image: string;
   isFlash: boolean;

@@ -24,14 +24,15 @@ const LoginPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [loginUser] = useLoginUserMutation();
-  const HandleToLogin = async (data: FieldValues) => {
+  const HandleToLogin = async (values: FieldValues) => {
     try {
-      const res: any = await loginUser(data).unwrap();
-      const user = verifyToken(res?.token);
-      if (res?.token) {
-        Cookies.set(authKey, res?.token, { expires: 7 });
-        dispatch(setUser({ user: user, token: res?.token }));
-        toast.success("User login successful");
+      const res: any = await loginUser(values).unwrap();
+      const token = res?.data?.token;
+      const user = verifyToken(res?.data?.token);
+      if (token) {
+        Cookies.set(authKey, token, { expires: 7 });
+        dispatch(setUser({ user: user, token: token }));
+        toast.success(res?.message);
         router.push("/");
       } else {
         toast.error(res?.error?.data?.message);

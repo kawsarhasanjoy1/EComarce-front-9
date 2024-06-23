@@ -10,17 +10,14 @@ import { IoEyeOutline } from "react-icons/io5";
 import { TTopCard } from "@/Types/Global";
 
 const TopCard = ({
-  category,
   image,
   name,
   price,
   discountPrice,
   product,
   rating,
-  path,
 }: TTopCard | any) => {
   const [isHovered, setIsHovered] = useState(false);
-
   return (
     <Link
       onMouseEnter={() => setIsHovered(true)}

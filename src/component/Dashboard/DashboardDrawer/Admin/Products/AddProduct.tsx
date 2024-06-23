@@ -1,5 +1,4 @@
-import { defaultProductValues } from "@/DeafualtValue/global";
-import { productSchema } from "@/ValidationSchema/productSchema";
+"use client";
 import BForm from "@/component/Forms/BForm";
 import FileUpload from "@/component/Forms/FileUpload";
 import { Input } from "@/component/Forms/Input";
@@ -7,13 +6,14 @@ import BSelect from "@/component/Forms/BSelect";
 import TextArea from "@/component/Forms/TextArea";
 import { Minerals, foodCategories, vitamins } from "@/constanc/constant";
 import useHostImage from "@/hook/hostImage/hostImage";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { useCreateProductMutation } from "@/redux/api/productApi";
 import toast from "react-hot-toast";
+import { useAppSelector } from "@/redux/hook";
+import { DefaultProductValue } from "@/DeafualtValue/global";
 
 const AddProduct = () => {
+  const user = useAppSelector((store) => store.auth.user);
   const [createProduct] = useCreateProductMutation();
   const HandleToSubmit = async (values: FieldValues) => {
     const res = await useHostImage(values?.image);
@@ -29,11 +29,11 @@ const AddProduct = () => {
       values.stock = values.stock;
       values.image = res.display_url;
       values.discountPrice = Number(values.discountPrice);
-      values.isFalse = false;
-      values.rating = 0;
+      values.isFalse = Number(values.discountPrice === 0) ? false : true;
+      values.userId = user?.id;
       try {
         const result: any = await createProduct(values).unwrap();
-        if (result?.insertedId) {
+        if (result?.success) {
           toast.success("Product created successful");
         }
       } catch (err: any) {
@@ -45,7 +45,7 @@ const AddProduct = () => {
     <BForm
       onSubmit={HandleToSubmit}
       // resolver={zodResolver(productSchema)}
-      defaultValues={defaultProductValues}
+      defaultValues={DefaultProductValue}
     >
       <div className=" grid md:grid-cols-2 grid-cols-1 gap-10">
         <div className=" space-y-3 bg-white shadow-md rounded-lg p-6">

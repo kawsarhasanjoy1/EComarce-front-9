@@ -14,14 +14,16 @@ const commonPrivateRoutes = [
   "products",
 ];
 const roleBasedPrivateRoutes = {
-  ADMIN: [/^\/dashboard\/admin/],
+  superAdmin: [/^\/dashboard\/superAdmin/],
+  admin: [/^\/dashboard\/admin/],
+  user: [/^\/dashboard\/user/],
 };
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   console.log(pathname);
   const accessToken = cookies().get("accessToken")?.value;
-
+ console.log(accessToken)
   if (!accessToken) {
     if (AuthRoutes.includes(pathname)) {
       return NextResponse.next();
@@ -50,10 +52,12 @@ export function middleware(request: NextRequest) {
   //    return NextResponse.next();
   // }
 
-  if (role && roleBasedPrivateRoutes[role as Role]) {
-    const routes = roleBasedPrivateRoutes[role as Role];
-    if (routes.some((route) => pathname.match(route))) {
-      return NextResponse.next();
+  if (role) {
+    if (role && roleBasedPrivateRoutes[role as Role]) {
+      const routes = roleBasedPrivateRoutes[role as Role];
+      if (routes.some((route) => pathname.match(route))) {
+        return NextResponse.next();
+      }
     }
   }
 

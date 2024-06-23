@@ -5,6 +5,7 @@ import Carousel from "@/component/ui/Home/Carousel";
 import FlashSale from "@/component/ui/Home/FlashSale";
 import Gallery from "@/component/ui/Home/Gallery";
 import TrendingProduct from "@/component/ui/Home/TrendingProduct";
+import Testimonials from "@/component/ui/Testimonials/Testimonials";
 
 const page = () => {
   return (
@@ -15,6 +16,7 @@ const page = () => {
       <Brand />
       <Gallery />
       <TrendingProduct />
+      <Testimonials />
       <Contact />
     </div>
   );

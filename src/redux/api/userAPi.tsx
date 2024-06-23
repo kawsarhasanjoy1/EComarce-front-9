@@ -1,26 +1,47 @@
+import { tagTypes } from "../TagTypes";
 import { baseApi } from "./baseApi";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createUser: build.mutation({
-      query: (data) => ({
-        url: "api/v1/register",
-        method: "POST",
-        body: data,
-      }),
+      query: (data) => (
+        console.log(data),
+        {
+          url: "create-user",
+          method: "POST",
+          data,
+        }
+      ),
+      invalidatesTags: [tagTypes.user],
     }),
     loginUser: build.mutation({
       query: (data) => ({
-        url: "api/v1/login",
+        url: "login",
         method: "POST",
-        body: data,
+        data,
       }),
     }),
+    upRole: build.mutation({
+      query: ({ id, role }: { id: string; role: string }) => ({
+        url: `update-role/${id}`,
+        method: "PATCH",
+        data: { role },
+      }),
+      invalidatesTags: [tagTypes.user],
+    }),
     fetchAllUser: build.query({
-      query: (email) => ({
-        url: `api/v1/user/${email}`,
+      query: () => ({
+        url: `users`,
         method: "GET",
       }),
+      providesTags: [tagTypes.user],
+    }),
+    fetchAllAdmin: build.query({
+      query: () => ({
+        url: `admins`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.user],
     }),
   }),
 });
@@ -28,5 +49,7 @@ const userApi = baseApi.injectEndpoints({
 export const {
   useCreateUserMutation,
   useLoginUserMutation,
+  useFetchAllAdminQuery,
+  useUpRoleMutation,
   useFetchAllUserQuery,
 } = userApi;

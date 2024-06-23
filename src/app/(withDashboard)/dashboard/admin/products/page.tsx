@@ -15,8 +15,9 @@ const page = () => {
 
   const [productDelete] = useDeleteProductMutation();
   const HandleToDelete = async (id: string) => {
+    console.log(id)
     try {
-      const res: any = await productDelete(id).unwrap();
+      const res: any = await productDelete(id);
       console.log(res);
       if (res.acknowledged) {
         toast.success("Products deleted successful");
@@ -46,7 +47,7 @@ const page = () => {
           </tr>
         </thead>
         <tbody className=" bg-slate-100 text-black">
-          {data?.map((product: TProduct) => (
+          {data?.data?.map((product: TProduct) => (
             <ProductTable
               HandleToDelete={HandleToDelete}
               HandleToUp={HandleToUp}

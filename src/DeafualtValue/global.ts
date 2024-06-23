@@ -8,20 +8,29 @@ export const DefaultLoginValue = {
   password: "",
 };
 
-export const defaultProductValues = {
-  description: "",
-  discountEndDate: "",
-  discountPrice: 0,
-  image: "",
-  isFalse: false,
+const Nutrients = {
+  vitamins: [],
+  minerals: [],
+};
+export const DefaultProductValue = {
   name: "",
+  category: "",
+  nutrients: Nutrients,
   price: 0,
-  rating: 0,
+  discountPrice: 0,
+  stock: 0,
+  discountEndDate: "",
+  image: "",
+  description: "",
+  isFlash: false,
+  userId: "",
 };
 
-export  const checkOutDefaultValues = {
+export const checkOutDefaultValues = {
   name: "",
   number: 0,
   district: "",
   subdistrict: "",
 };
+
+

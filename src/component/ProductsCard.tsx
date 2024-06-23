@@ -56,7 +56,7 @@ const ProductsCard = ({ product }: { product: TProduct }) => {
         ""
       )}
       <p className="absolute  top-0 left-2  bg-[#a2e233] px-6  rounded-tl-[50px] rounded-br-[50px]">
-        {product?.rating} star
+        {product?.ratingAverage} star
       </p>
 
       <div
