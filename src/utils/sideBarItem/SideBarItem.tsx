@@ -74,6 +74,16 @@ export const SideBarItem = (role: UserRole) => {
           title: "Orders",
           path: `${role}/orders`,
           icon: MdOutlineShoppingCart,
+        },
+        {
+          title: "Reviews",
+          path: `${role}/reviews`,
+          icon: MdReviews,
+        },
+        {
+          title: "Users",
+          path: `${role}/all-user`,
+          icon: FaUsersGear,
         }
       );
 

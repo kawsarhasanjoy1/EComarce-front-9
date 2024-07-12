@@ -18,6 +18,13 @@ const reviewApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.review],
     }),
+    fetchAllReviewsForAdmin: build.query({
+      query: () => ({
+        url: "admin-reviews",
+        method: "GET",
+      }),
+      providesTags: [tagTypes.review],
+    }),
     fetchSingleReviewWithUserId: build.query({
       query: (id: string) => ({
         url: `user-review/${id}`,
@@ -32,4 +39,5 @@ export const {
   useCreateReviewMutation,
   useFetchAllReviewsQuery,
   useFetchSingleReviewWithUserIdQuery,
+  useFetchAllReviewsForAdminQuery,
 } = reviewApi;

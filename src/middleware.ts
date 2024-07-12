@@ -6,13 +6,7 @@ import type { NextRequest } from "next/server";
 type Role = keyof typeof roleBasedPrivateRoutes;
 
 const AuthRoutes = ["/login", "/register"];
-const commonPrivateRoutes = [
-  "/dashboard",
-  "/contact",
-  "/about",
-  "flash-sale",
-  "products",
-];
+const commonPrivateRoutes = ["/contact", "/about", "flash-sale", "products",'/dashboard/payment'];
 const roleBasedPrivateRoutes = {
   superAdmin: [/^\/dashboard\/superAdmin/],
   admin: [/^\/dashboard\/admin/],
@@ -21,9 +15,8 @@ const roleBasedPrivateRoutes = {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  console.log(pathname);
   const accessToken = cookies().get("accessToken")?.value;
- console.log(accessToken)
+
   if (!accessToken) {
     if (AuthRoutes.includes(pathname)) {
       return NextResponse.next();
@@ -41,25 +34,29 @@ export function middleware(request: NextRequest) {
   }
 
   let decodedData = null;
-
   if (accessToken) {
     decodedData = jwtDecode(accessToken) as any;
   }
 
   const role = decodedData?.role;
-
-  // if (role === 'ADMIN' && pathname.startsWith('/dashboard/admin')) {
-  //    return NextResponse.next();
-  // }
-
-  if (role) {
-    if (role && roleBasedPrivateRoutes[role as Role]) {
-      const routes = roleBasedPrivateRoutes[role as Role];
-      if (routes.some((route) => pathname.match(route))) {
-        return NextResponse.next();
-      }
-    }
+  if (role === "superAdmin" && pathname.startsWith("/dashboard/superAdmin")) {
+    return NextResponse.next();
   }
+  if (role === "admin" && pathname.startsWith("/dashboard/admin")) {
+    return NextResponse.next();
+  }
+  if (role === "user" && pathname.startsWith("/dashboard/user")) {
+    return NextResponse.next();
+  }
+
+  // if (role) {
+  //   if (role && roleBasedPrivateRoutes[role as Role]) {
+  //     const routes = roleBasedPrivateRoutes[role as Role];
+  //     if (routes.some((route) => pathname.match(route))) {
+  //       return NextResponse.next();
+  //     }
+  //   }
+  // }
 
   return NextResponse.redirect(new URL("/", request.url));
 }

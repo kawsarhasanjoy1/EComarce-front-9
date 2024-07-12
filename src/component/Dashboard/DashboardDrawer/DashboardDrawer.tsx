@@ -1,3 +1,4 @@
+"use client";
 import Avatar from "@/component/Avatar";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ const DashboardDrawer = ({ children }: { children: ReactNode }) => {
   return (
     <div>
       <div className=" sticky top-0 bg-gradient bg-black flex justify-between  items-center z-50 px-5">
-      <div className=" flex items-center">
+        <div className=" flex items-center">
           <Link href={"/"}>
             <p className=" flex items-center gap-1 text-[32px]">
               {/* <p className=" text-xl flex items-center mb-3">Winter</p> */}

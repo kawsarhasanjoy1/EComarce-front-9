@@ -2,15 +2,13 @@
 "use client";
 import Loading from "@/app/loading";
 import ReviewTable from "@/component/Dashboard/DashboardDrawer/Admin/ReviewTable/ReviewTable";
+import UserTable from "@/component/Dashboard/DashboardDrawer/Admin/User/User";
 import EmptyCart from "@/component/EmptyCart/EmptyCart";
-
-import { useFetchSingleReviewWithUserIdQuery } from "@/redux/api/reviewApi";
-import { useAppSelector } from "@/redux/hook";
+import { useFetchAllReviewsQuery } from "@/redux/api/reviewApi";
 import React from "react";
 
 const page = () => {
-  const { id } = useAppSelector((store) => store?.auth?.user);
-  const { data, isLoading } = useFetchSingleReviewWithUserIdQuery(id);
+  const { data, isLoading } = useFetchAllReviewsQuery(undefined);
   if (isLoading) {
     return <Loading />;
   }

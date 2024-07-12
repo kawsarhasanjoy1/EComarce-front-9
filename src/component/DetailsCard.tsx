@@ -34,7 +34,6 @@ const DetailsCard = ({ product }: { product: TProduct }) => {
     });
   });
 
-
   const [createReview] = useCreateReviewMutation();
   const [rating, setRating] = useState(0);
 
@@ -231,9 +230,12 @@ const DetailsCard = ({ product }: { product: TProduct }) => {
       </div>
       <hr />
       <div>
-        {userInfo?.map((user: any) => {
+        {userInfo?.map((user: any, index: number) => {
           return (
-            <div className=" space-y-4 my-10 border p-10 rounded-md border-dotted">
+            <div
+              key={index}
+              className=" space-y-4 my-10 border p-10 rounded-md border-dotted"
+            >
               <div className="flex gap-4 content-center items-center">
                 <div>
                   <Image
@@ -250,9 +252,10 @@ const DetailsCard = ({ product }: { product: TProduct }) => {
                 </div>
                 <div>
                   <p>{user?.user?.name}</p>{" "}
-                  {user?.reviews?.map((item: any) => {
+                  {user?.reviews?.map((item: any, index: number) => {
                     return (
                       <Rating
+                        key={index}
                         style={{ maxWidth: 90 }}
                         value={Number(item?.rating)}
                         readOnly
@@ -262,8 +265,8 @@ const DetailsCard = ({ product }: { product: TProduct }) => {
                 </div>
               </div>
               <div>
-                {user?.reviews?.map((item: any) => {
-                  return <p>{item?.description}</p>;
+                {user?.reviews?.map((item: any, index: number) => {
+                  return <p key={index}>{item?.description}</p>;
                 })}
               </div>
             </div>
