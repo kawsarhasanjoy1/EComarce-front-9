@@ -39,7 +39,7 @@ const Testimonials = () => {
       <p className="text-3xl font-semibold text-center mt-10">Testimonials</p>
       <div className="max-w-full min-w-[350px] mx-auto h-[400px] flex flex-row items-center overflow-hidden gap-5 lg:gap-10 md:px-16 lg:px-24">
         <div className="relative overflow-hidden">
-          <div className="absolute w-full h-full flex items-center justify-between z-50">
+          <div className="absolute w-full h-full flex items-center justify-between ">
             <button
               onClick={prevSlider}
               className="flex justify-center items-center bg-green-200 p-2 rounded-full w-8 h-8 md:w-11 md:h-11 relative overflow-hidden"
