@@ -4,17 +4,19 @@ import Brand from "@/component/ui/Home/Brand";
 import Carousel from "@/component/ui/Home/Carousel";
 import FlashSale from "@/component/ui/Home/FlashSale";
 import Gallery from "@/component/ui/Home/Gallery";
+import OurService from "@/component/ui/Home/OurService";
 import TrendingProduct from "@/component/ui/Home/TrendingProduct";
 import Testimonials from "@/component/ui/Testimonials/Testimonials";
 
 const page = () => {
   return (
-    <div className=" space-y-32">
+    <div className=" space-y-32 md:px-0 px-3">
       <Carousel />
       <FlashSale />
       <AboutUs />
       <Brand />
       <Gallery />
+      <OurService />
       <TrendingProduct />
       <Testimonials />
       <Contact />

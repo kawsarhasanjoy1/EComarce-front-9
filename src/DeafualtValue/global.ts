@@ -4,8 +4,8 @@ export const DefaultRegisterValue = {
   password: "",
 };
 export const DefaultLoginValue = {
-  email: "",
-  password: "",
+  email: "kawsarhasanjoy342@gmail.com",
+  password: "123456",
 };
 
 const Nutrients = {
@@ -22,7 +22,7 @@ export const DefaultProductValue = {
   discountEndDate: "",
   image: "",
   description: "",
-  isFlash: false,
+  isFalse: false,
   userId: "",
 };
 
@@ -32,5 +32,3 @@ export const checkOutDefaultValues = {
   district: "",
   subdistrict: "",
 };
-
-

@@ -5,11 +5,10 @@ import Button from "@/component/ui/Button/Button";
 import ProductsCard from "@/component/ProductsCard";
 
 const TrendingProduct = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}products`, {
+  const res = await fetch(`${process.env.BACKEND_URL}top-products`, {
     next: { revalidate: 30 },
   });
   const data = await res.json();
-  data?.data?.sort((a: TProduct, b: TProduct) => b.rating - a.rating);
 
   return (
     <div className=" mt-20">
@@ -28,7 +27,7 @@ const TrendingProduct = async () => {
         </div>
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 mt-10">
-        {data?.data?.slice(0, 6).map((product: TProduct) => (
+        {data?.data?.map((product: TProduct) => (
           <ProductsCard key={product?._id} product={product} />
         ))}
       </div>

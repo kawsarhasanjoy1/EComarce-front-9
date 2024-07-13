@@ -7,9 +7,8 @@ const FlashSale = async () => {
   const res = await fetch(`${process.env.BACKEND_URL}flash-sale`);
 
   const sales = await res.json();
-  
   return (
-    <div className=" mt-20 px-2">
+    <div className=" mt-20">
       <div className=" flex justify-between items-center">
         <p className=" text-xl font-semibold ">Flash Sale</p>
         <Link href={"/flash-sale"}>

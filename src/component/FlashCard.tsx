@@ -19,7 +19,7 @@ const Card = ({ product, time }: { product: TProduct; time?: string }) => {
       className=" w-full relative  space-y-2  md:hover:shadow-xl hover:duration-500  border-2 transition duration-500 ease-in-out"
     >
       <Image
-        className=" h-[290px] mx-auto space-y-40 object-contain"
+        className=" h-[260px] mx-auto object-cover"
         width={400}
         height={600}
         src={product?.image}

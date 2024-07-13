@@ -32,7 +32,7 @@ export interface TProduct {
   reviews?: [];
   category: string;
   image: string;
-  isFlash: boolean;
+  isFalse: boolean;
   description: string;
   stock: number;
   nutrients: {

@@ -35,7 +35,7 @@ const ContactInfo = () => {
       initial="hidden"
       className=""
     >
-      <div className=" space-y-5 mx-2 shadow-md rounded-md">
+      <div className=" space-y-5 shadow-md rounded-md">
         <div className="border rounded-lg text-start flex md:gap-5 gap-3 md:pl-5 pl-3 py-8 ">
           <div>
             <p className=" bg-[#a2e233] md:w-16 md:h-16 w-10 h-10 flex items-center justify-center rounded-full">

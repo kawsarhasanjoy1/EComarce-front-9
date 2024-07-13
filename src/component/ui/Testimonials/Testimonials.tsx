@@ -10,7 +10,6 @@ const Testimonials = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   const { data } = useFetchAllReviewsQuery(undefined);
   const array = data?.data;
-
   const prevSlider = useCallback(() => {
     setCurrentSlider((currentSlider) =>
       currentSlider === 0 ? array?.length - 2 : currentSlider - 1
@@ -30,7 +29,7 @@ const Testimonials = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [nextSlider]);
+  }, [nextSlider, array]);
 
   const isSmallScreen =
     typeof window !== "undefined" && window.innerWidth <= 768;
@@ -40,10 +39,10 @@ const Testimonials = () => {
       <p className="text-3xl font-semibold text-center mt-10">Testimonials</p>
       <div className="max-w-full min-w-[350px] mx-auto h-[400px] flex flex-row items-center overflow-hidden gap-5 lg:gap-10 md:px-16 lg:px-24">
         <div className="relative overflow-hidden">
-          <div className="absolute w-full h-full flex items-center justify-between z-50 px-5">
+          <div className="absolute w-full h-full flex items-center justify-between z-50">
             <button
               onClick={prevSlider}
-              className="flex justify-center items-center bg-green-200 p-2 rounded-full w-6 h-6 md:w-11 md:h-11 relative overflow-hidden"
+              className="flex justify-center items-center bg-green-200 p-2 rounded-full w-8 h-8 md:w-11 md:h-11 relative overflow-hidden"
             >
               <FcPrevious size={40} />
               <div className="absolute top-0 left-0 border-[2px] w-full h-full border-red-300 rounded-full border-dotted transition-all hover:animate-spin"></div>

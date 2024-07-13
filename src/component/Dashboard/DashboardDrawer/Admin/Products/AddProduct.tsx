@@ -29,7 +29,7 @@ const AddProduct = () => {
       values.stock = values.stock;
       values.image = res.display_url;
       values.discountPrice = Number(values.discountPrice);
-      values.isFalse = Number(values.discountPrice === 0) ? false : true;
+      values.isFalse = Number(values?.discountPrice === 0) ? true : false;
       values.userId = user?.id;
       try {
         const result: any = await createProduct(values).unwrap();

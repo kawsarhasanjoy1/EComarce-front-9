@@ -49,7 +49,7 @@ const ContactForm = () => {
       initial="hidden"
     >
       <BForm onSubmit={HandleToSubmit}>
-        <div className="shadow-md  mt-[50px] md:mt-0 md:px-10 px-2 py-6 border rounded-lg space-y-[18px]  md:text-white">
+        <div className="shadow-md  mt-[50px] md:mt-0 md:px-10 py-6 border rounded-lg space-y-[18px]  md:text-white">
           <div className="form-control w-full">
             <Input label="Name" name="name" type="text" edit="" />
           </div>

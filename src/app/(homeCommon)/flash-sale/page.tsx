@@ -8,19 +8,18 @@ const FlashSaleHome = async () => {
       const response = await fetch(`${process.env.BACKEND_URL}flash-sale`);
       // Ensure the response is valid
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error('Failed to fetch flash sale data:', error);
+      console.error("Failed to fetch flash sale data:", error);
       throw error;
     }
   }
-  
+
   // Usage
   const product = await fetchData();
-  
 
   return (
     <div className="">
