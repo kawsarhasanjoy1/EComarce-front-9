@@ -85,14 +85,14 @@ const DetailsCard = ({ product }: { product: TProduct }) => {
         <div className=" relative">
           <Image
             className=" border md:h-screen object-cover"
-            src={product.image}
+            src={product?.image}
             height={700}
             width={700}
-            alt={product.name}
+            alt={product?.name}
           />
           <div className=" absolute top-6 left-6">
             <div className=" relative text-3xl font-semibold text-green-600">
-              {product?.discountPrice ? `$${product.price}` : ""}
+              {product?.discountPrice ? `$${product?.price}` : ""}
               <p
                 className={`${
                   product?.discountPrice
@@ -105,26 +105,26 @@ const DetailsCard = ({ product }: { product: TProduct }) => {
         </div>
         <div className=" space-y-10">
           <div className=" space-y-4">
-            <p className=" text-xl font-semibold">{product.name}</p>
+            <p className=" text-xl font-semibold">{product?.name}</p>
 
             <p className=" text-3xl font-semibold text-green-600">
               $
               {product?.discountPrice ? product?.discountPrice : product?.price}
             </p>
-            <p>{product.description}</p>
+            <p>{product?.description}</p>
           </div>
           <hr />
           <div className=" space-y-2">
             <div className=" font-semibold">
-              Type: <span className=" font-normal">{product.category}</span>
+              Type: <span className=" font-normal">{product?.category}</span>
             </div>
             <div className=" font-semibold">
               Vitamins:{" "}
-              <span className=" font-normal">{product.nutrients.vitamins}</span>
+              <span className=" font-normal">{product?.nutrients?.vitamins}</span>
             </div>
             <div className=" font-semibold">
               Minerals:{" "}
-              <span className=" font-normal">{product.nutrients.minerals}</span>
+              <span className=" font-normal">{product?.nutrients?.minerals}</span>
             </div>
           </div>
           <hr />

@@ -50,7 +50,7 @@ export const SideBarItem = (role: UserRole) => {
           icon: MdOutlineAdminPanelSettings,
         }
       );
-
+  
       break;
 
     case USER_ROLE.admin:
