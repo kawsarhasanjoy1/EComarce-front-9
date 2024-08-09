@@ -37,22 +37,26 @@ const Auth = () => {
   };
 
   const filter = order?.filter((item: TOrder) => item?.email == user?.email);
-  const isAdmin = user?.role;
+  const role = user?.role;
   return (
     <div className=" md:flex gap-10 justify-center items-center space-y-4 md:space-y-0">
       <li className="group flex  cursor-pointer flex-col">
-        <Link href={`/dashboard/${isAdmin}`}>Dashboard</Link>
+        <Link href={`/dashboard/${role}`}>Dashboard</Link>
         <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
       </li>
-      <li className="group flex  cursor-pointer flex-col relative">
-        <Link href={"/checkout"}>
-          <p className=" absolute md:-top-3 md:-right-6 left-6 text-[12px] bg-[#a2e233] px-3 rounded-full">
-            {filter?.length}
-          </p>
-          <MdAddShoppingCart size={20} />{" "}
-        </Link>
-        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
-      </li>
+      {role === "user" ? (
+        <li className="group flex  cursor-pointer flex-col relative">
+          <Link href={"/checkout"}>
+            <p className=" absolute md:-top-3 md:-right-6 left-6 text-[12px] bg-[#a2e233] px-3 rounded-full">
+              {filter?.length}
+            </p>
+            <MdAddShoppingCart size={20} />{" "}
+          </Link>
+          <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
+        </li>
+      ) : (
+        ""
+      )}
       <li
         onClick={HandleToMode}
         className="group flex  cursor-pointer flex-col"

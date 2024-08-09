@@ -10,7 +10,7 @@ import React from "react"; // Ensure React is imported
 
 const Page = () => {
   const { data: Stats, isLoading } = useFetchStatsQuery(undefined);
-
+ console.log(Stats)
   if (isLoading) {
     return <Loading />;
   }

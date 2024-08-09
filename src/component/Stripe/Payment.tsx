@@ -6,6 +6,7 @@ import CheckoutForm from "./CheckoutForm";
 import { useAppSelector } from "@/redux/hook";
 
 const Payment = ({ stripe_pk }: { stripe_pk: string }) => {
+  console.log(stripe_pk)
   const { priceOfTotalSelectedProducts, order, selectedProducts } =
     useAppSelector((store) => store?.order);
   const price = priceOfTotalSelectedProducts + selectedProducts * 15;

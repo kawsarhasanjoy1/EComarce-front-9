@@ -6,7 +6,7 @@ const paymentApi = baseApi.injectEndpoints({
       query: (price: number) => ({
         url: "create-payment-intent",
         method: "POST",
-        data: { price },
+        data: { price }, 
       }),
     }),
     fetchPaymentWithEmail: build.query({

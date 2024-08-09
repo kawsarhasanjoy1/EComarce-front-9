@@ -31,7 +31,7 @@ export const orderSlice = createSlice({
   reducers: {
     addToOrder: (state: any, action) => {
       const isExist = state.order.find((item: any) => {
-        return item.productId === action.payload.order.productId;
+        return item?.productId === action.payload.order.productId;
       });
 
       if (!isExist) {

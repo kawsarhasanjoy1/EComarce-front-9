@@ -13,6 +13,7 @@ import { useCreateReviewMutation } from "@/redux/api/reviewApi";
 import { useFetchAllUserQuery } from "@/redux/api/userAPi";
 
 const DetailsCard = ({ product }: { product: TProduct }) => {
+  console.log(product)
   const dispatch = useAppDispatch();
   const { data } = useFetchAllUserQuery(undefined);
   const user = useAppSelector((store) => store?.auth?.user);
@@ -43,7 +44,7 @@ const DetailsCard = ({ product }: { product: TProduct }) => {
       productId: products?._id,
       category: products?.category,
       name: products?.name,
-      price: products?.price,
+      price: products?.discountPrice === 0 ? products?.price : products?.discountPrice,
       image: products?.image,
     };
 

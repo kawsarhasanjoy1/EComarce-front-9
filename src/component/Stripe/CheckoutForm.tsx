@@ -72,6 +72,7 @@ const CheckoutForm = ({ price }: { price: number }) => {
         card,
       });
       if (error) {
+        console.log('error', error)
         setError(error?.message || "");
       } else {
         paymentMethod;
@@ -88,6 +89,7 @@ const CheckoutForm = ({ price }: { price: number }) => {
           },
         });
       if (confirmError) {
+        console.log('confirmError', confirmError)
         setError(confirmError?.message as string);
       } else {
         if (paymentIntent?.status === "succeeded") {

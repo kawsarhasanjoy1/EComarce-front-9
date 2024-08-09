@@ -8,19 +8,19 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import verifyToken from "@/utils/verifyToken/verifyToken";
 import { MdCancel } from "react-icons/md";
 
+const stripe =
+  (process.env.STRIPE_PK as string) ||
+  "pk_test_51NchT9FavTzaXkmBPXJrPMjrnIGHdsIrJ6uJd5sxFFiSnmavwtZj3WafWWzdj8LkZPBN4TCuxfcwj6u5rR84LfHG00kYmfsPGt";
 const Page = () => {
-  const stripe = process.env.STRIPE_PK as string;
   const data = useAppSelector((store: any) => store.order.order);
   const { token } = useAppSelector((store: any) => store.auth);
-
-  console.log("Token:", token); 
 
   let user: any = null;
   if (token) {
     try {
       user = verifyToken(token);
     } catch (error) {
-      console.error("Invalid token:", error); 
+      console.error("Invalid token:", error);
     }
   }
 
