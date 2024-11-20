@@ -6,7 +6,7 @@ const Carousel = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   const sliders = [
     {
-      img: "https://i.ibb.co/txDgNGr/horlix.webp",
+      img: "https://i.ibb.co.com/3fvkpnW/horlicks.jpg",
       title: "Horlicks for baby",
       des: "Holistic baby care prioritizes comprehensive well-being, integrating nutrition, emotional support, and safe environments to nurture healthy development from infancy.",
     },
@@ -16,12 +16,12 @@ const Carousel = () => {
       des: "Homemade baby formula, using boiled water and powdered infant formula, can serve as a temporary solution when commercial options are limited, but consult a healthcare professional for safety and nutritional guidance.",
     },
     {
-      img: "https://i.ibb.co/9nHzMcP/babby-milk.jpg",
+      img: "https://i.ibb.co.com/Bwq89LK/milk-hd-8k-wallpaper-stock-photographic-image-871881-15749.jpg",
       title: "Milk for baby",
       des: "Packaged milk, whether formula or pasteurized cow's milk, offers convenience and essential nutrients for infant nutrition, supporting healthy growth and developmen",
     },
     {
-      img: "https://i.ibb.co/khh41Mm/baby-food.jpg",
+      img: "https://i.ibb.co.com/ZfBTvfW/Parents-PRT-how-much-does-my-kid-need-to-eat-pt2-Rachel-Vanni-hero-489-1da488b1c2d34087af364ab94dcd3.jpg",
       title: "Many food for baby",
       des: "Baby food options include pureed fruits, vegetables, grains, and proteins, offering essential nutrients and flavors to support healthy growth and development during weaning",
     },

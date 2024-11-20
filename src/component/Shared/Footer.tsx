@@ -4,11 +4,10 @@ import React from "react";
 import { CgMail } from "react-icons/cg";
 import { FaFacebook, FaGithub, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdOutlineAddIcCall } from "react-icons/md";
-import Container from "../Container/Container";
 
 const Footer = () => {
   return (
-    <Container>
+  
       <div className="bg-black space-y-6 py-10">
         <div className=" grid grid-cols-1 md:grid-cols-5 px-7 space-y-10 md:justify-items-center text-white">
           <div>
@@ -156,7 +155,7 @@ const Footer = () => {
           &copy; 2024 developed by baby care All Right Reserved.
         </p>
       </div>
-    </Container>
+
   );
 };
 
