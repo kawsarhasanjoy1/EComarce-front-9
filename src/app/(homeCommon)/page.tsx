@@ -1,3 +1,4 @@
+import Container from "@/component/Container/Container";
 import Contact from "@/component/ui/Contact/Contact";
 import AboutUs from "@/component/ui/Home/AboutUs";
 import Brand from "@/component/ui/Home/Brand";
@@ -10,8 +11,10 @@ import Testimonials from "@/component/ui/Testimonials/Testimonials";
 
 const page = () => {
   return (
-    <div className=" space-y-32 md:px-0 px-3">
-      <Carousel />
+   <div>
+  <Carousel />
+<Container>
+<div className=" space-y-32 md:px-0 px-3">
       <FlashSale />
       <AboutUs />
       <Brand />
@@ -21,6 +24,8 @@ const page = () => {
       <Testimonials />
       <Contact />
     </div>
+</Container>
+   </div>
   );
 };
 

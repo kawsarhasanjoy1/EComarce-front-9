@@ -26,8 +26,8 @@ const TrendingProduct = async () => {
           </Link>
         </div>
       </div>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 mt-10">
-        {data?.data?.map((product: TProduct) => (
+      <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
+        {data?.data?.slice(0,4).map((product: TProduct) => (
           <ProductsCard key={product?._id} product={product} />
         ))}
       </div>

@@ -16,7 +16,7 @@ const Card = ({ product, time }: { product: TProduct; time?: string }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       href={`flash-sale/${product?._id}`}
-      className=" w-full relative  space-y-2  md:hover:shadow-xl hover:duration-500  border-2 transition duration-500 ease-in-out"
+      className=" w-full relative  space-y-2  md:hover:shadow-xl hover:duration-500  border-2 transition duration-500 ease-in-out rounded-lg"
     >
       <Image
         className=" h-[260px] mx-auto object-cover"

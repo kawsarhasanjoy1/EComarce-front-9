@@ -26,11 +26,13 @@ const TopCard = ({
         pathname: `products`,
         query: { category: product.category },
       }}
-      className="w-full border relative space-y-2 col-span-1 cursor-pointer  hover:shadow-xl hover:duration-500 h-[400px] overflow-hidden transform transition duration-500 ease-in-out"
+      className="w-full border relative space-y-2 col-span-1 cursor-pointer  hover:shadow-xl hover:duration-500 h-[370px] overflow-hidden transform transition duration-500 ease-in-out rounded-md"
     >
       <Image
         className="h-[230px] mx-auto space-y-40 group-hover:scale-110 duration-500"
         width={400}
+        priority
+        quality={100}
         height={600}
         src={product ? product?.image : image}
         alt={product ? product?.name : name}

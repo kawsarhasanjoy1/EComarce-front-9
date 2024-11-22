@@ -12,10 +12,13 @@ const OurService = () => {
       <div className=" relative md:space-y-0 space-y-16">
         <div className=" w-full h-full ">
           <Image
-            className=" w-full md:h-[500px] rounded-xl"
-            width={100}
-            height={100}
-            src={"https://i.ibb.co/2tYKZPB/pexels-mikhail-nilov-7682340.jpg"}
+            className=" w-full h-[500px] rounded-xl"
+            width={1024}
+            height={1024}
+            quality={100}
+            priority
+            layout="responsive"
+            src={"https://i.ibb.co.com/Wp6QVcg/work-8049516-960-720.webp"}
             alt="services image"
           />
         </div>

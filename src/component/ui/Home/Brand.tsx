@@ -16,8 +16,8 @@ const Brand = async ({}) => {
           Whether youre searching for inspiration, information, or products
         </p>
       </div>
-      <div className="grid grid-cols-1  md:grid-cols-3 gap-20 mt-20">
-        {products?.data?.slice(0, 6).map((product: TProduct) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mx-auto pt-10 space-y-10 md:space-y-0">
+        {products?.data?.slice(0, 8).map((product: TProduct) => (
           <TopCard
             key={product?._id}
             product={product}

@@ -16,7 +16,7 @@ const ProductsCard = ({ product }: { product: TProduct }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       href={`products/${product?._id}`}
-      className="w-full border relative space-y-2 col-span-1 cursor-pointer  hover:shadow-xl hover:duration-500 h-[400px] overflow-hidden transition duration-500 ease-out"
+      className="w-full border relative space-y-2 col-span-1 cursor-pointer  hover:shadow-xl hover:duration-500 h-[370px] overflow-hidden transition duration-500 ease-out rounded-md"
     >
       <Image
         className="h-[230px] mx-auto space-y-40 group-hover:scale-110 duration-500"

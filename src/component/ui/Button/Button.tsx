@@ -18,8 +18,8 @@ const Button = ({
         onClick={HandleToData}
         className={`${
           mode
-            ? " bg-[#9dae11] text-white px-8 py-3 font-bold hover:bg-transparent border-2 hover:border-[#9dae11] duration-500"
-            : "bg-black px-8 py-3  text-white font-bold hover:border-black hover:border hover:bg-transparent hover:text-black duration-300"
+            ? " bg-[#9dae11] text-white px-8 py-3 font-bold hover:bg-transparent border-2 hover:border-[#9dae11] duration-500 rounded-md"
+            : "bg-black px-8 py-3  text-white font-bold hover:border-black hover:border hover:bg-transparent hover:text-black duration-300 rounded-md"
         } ${className}`}
       >
         {children}
